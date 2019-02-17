@@ -1,6 +1,10 @@
 package com.tyraka.server.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "NOZZLES")
@@ -15,6 +19,10 @@ public class Nozzle {
 
     @Column(nullable = false)
     private String material;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "nozzle", cascade = CascadeType.REMOVE)
+    private List<Engine> engines = new ArrayList<Engine>();
 
     public Nozzle(float weight, String material) {
         this.weight = weight;

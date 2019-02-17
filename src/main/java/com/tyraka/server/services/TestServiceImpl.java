@@ -21,5 +21,6 @@ public class TestServiceImpl implements TestService {
     public Test getTestById(Integer id) { return testRepository.findById(id).get(); }
 
     @Override
-    public void deleteTest(Integer id) { testRepository.delete(getTestById(id));}
+    public void deleteTest(Integer id) { testRepository.delete(getTestById(id)); }
+
 }

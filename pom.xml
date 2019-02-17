@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.tyraka</groupId>
-	<artifactId>server</artifactId>
+	<artifactId>tyrakaServer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>server</name>
 	<description>Server for the Tyraka aplication</description>
@@ -17,6 +17,12 @@
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
+
+	<packaging>war</packaging>
+
+	<build>
+		<finalName>${artifactId}</finalName>
+	</build>
 
 	<dependencies>
 		<dependency>
@@ -28,6 +34,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- MySQL setup -->
@@ -62,40 +74,4 @@
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.4.1</version>
-				<dependencies>
-					<dependency>
-						<groupId>org.codehaus.plexus</groupId>
-						<artifactId>plexus-archiver</artifactId>
-						<version>2.4.4</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.0.0</version>
-				<dependencies>
-					<dependency>
-						<groupId>org.codehaus.plexus</groupId>
-						<artifactId>plexus-archiver</artifactId>
-						<version>2.4.4</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>3.2.2</version>
-			</plugin>
-		</plugins>
-	</build>
-
-	<packaging>war</packaging>
 </project>

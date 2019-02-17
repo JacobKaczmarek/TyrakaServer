@@ -30,6 +30,9 @@ public class Test {
     @ManyToOne
     private Engine engine;
 
+    @Column(name = "results_path")
+    private String resultsPath;
+
     public Test(float specificImpuls, float maxThrust, float burningTime, LocalDate date, Engine engine) {
         this.specificImpuls = specificImpuls;
         this.maxThrust = maxThrust;
@@ -87,5 +90,13 @@ public class Test {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public String getResultsPath() {
+        return resultsPath;
+    }
+
+    public void setResultsPath(String resultsPath) {
+        this.resultsPath = resultsPath;
     }
 }

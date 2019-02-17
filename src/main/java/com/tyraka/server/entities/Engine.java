@@ -30,7 +30,7 @@ public class Engine {
     private Fuel fuel;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "engine")
+    @OneToMany(mappedBy = "engine", cascade = CascadeType.REMOVE)
     private List<Test> tests = new ArrayList<Test>();
 
     public Engine(String name, Body body, Plug plug, Nozzle nozzle, Fuel fuel) {
