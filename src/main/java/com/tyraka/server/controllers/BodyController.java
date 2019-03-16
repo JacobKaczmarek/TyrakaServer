@@ -2,7 +2,6 @@ package com.tyraka.server.controllers;
 
 import com.tyraka.server.entities.Body;
 import com.tyraka.server.services.BodyService;
-import org.aspectj.weaver.patterns.HasThisTypePatternTriedToSneakInSomeGenericOrParameterizedTypePatternMatchingStuffAnywhereVisitor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-@CrossOrigin
+@CrossOrigin()
 @RestController
 @RequestMapping("/api")
 public class BodyController {

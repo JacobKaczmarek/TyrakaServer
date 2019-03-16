@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost")
 @RestController
 @RequestMapping("/api")
 public class EngineController {

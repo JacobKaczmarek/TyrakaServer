@@ -1,7 +1,7 @@
 package com.tyraka.server.models;
 
 public class ResultModel {
-    double thrust;
-    double temp;
-    double time;
+    public double thrust;
+    public double temp;
+    public double time;
 }

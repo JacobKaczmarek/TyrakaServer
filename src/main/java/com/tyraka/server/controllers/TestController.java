@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tyraka.server.entities.Test;
 import com.tyraka.server.models.ResultModel;
+import com.tyraka.server.models.ResultsModel;
 import com.tyraka.server.services.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,9 +21,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
+import java.util.List;
 
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost")
 @RestController
 @RequestMapping("/api")
 public class TestController {
@@ -64,7 +66,7 @@ public class TestController {
     public ResponseEntity<Void> addResults(@PathVariable Integer id, @RequestBody @NotNull Object results) {
         try {
             Test test = testService.getTestById(id);
-            String filePath = "/Users/jacob/Downloads/test" + test.getId() + ".json";
+            String filePath = "/home/readouts/" + test.getId() + ".json";
 
             mapper.writeValue(new File(filePath), results);
             test.setResultsPath(filePath);
@@ -80,14 +82,17 @@ public class TestController {
     }
 
     @RequestMapping(value = "/testResults/{id}", method = RequestMethod.GET)
-    public ResultModel[] getResults(@PathVariable Integer id) {
+    public List<ResultModel> getResults(@PathVariable Integer id) {
         Test test = testService.getTestById(id);
-        ResultModel[] results = null;
+        File testFile = new File(test.getResultsPath());
+        ResultsModel results;
+        results = null;
         try {
-            results = mapper.readValue(test.getResultsPath(), ResultModel[].class);
+            results = mapper.readValue(testFile, ResultsModel.class);
         } catch (java.io.IOException e) {
             e.printStackTrace();
         }
-        return results;
+
+        return results.getResults();
     }
 }
