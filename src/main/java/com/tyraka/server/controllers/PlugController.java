@@ -13,7 +13,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://s434624.students.wmi.amu.edu.pl")
+@CrossOrigin(origins = "https://s434624.students.wmi.amu.edu.pl")
 @RestController
 @RequestMapping("/api")
 public class PlugController {
