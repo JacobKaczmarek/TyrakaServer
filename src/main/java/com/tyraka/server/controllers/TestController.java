@@ -24,7 +24,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 
-@CrossOrigin(origins = "http://s434624.students.wmi.amu.edu.pl")
+@CrossOrigin()
 @RestController
 @RequestMapping("/api")
 public class TestController {
